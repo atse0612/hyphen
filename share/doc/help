@@ -1,0 +1,11 @@
+USAGE:
+	hyphen [-p pattern-file] [-h | -v]
+
+OPTIONS:
+	-p pattern-file
+		The pattern-file contains patterns which indicates hyphen how to hyphenate words
+		If not specified, /usr/local/share/hyphen/pat will be used
+	-h
+		Print this brief manumal
+	-v
+		Print the version
