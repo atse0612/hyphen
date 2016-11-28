@@ -30,7 +30,7 @@ static int patwei[PAT_MAXN][PAT_MAXL + 1];
 static void prsarg(int argc, char **argv);
 static void ldpat(void);
 static char *hyphen(char *dst, const char *src);
-static int help(int ret);
+static int usage(int ret);
 static int about(void);
 
 int main(int argc, char **argv)
@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 		puts(hyphen(buf, wrd));
 	}
 
+	acdes(pat);
 	return 0;
 }
 
@@ -57,11 +58,11 @@ static void prsarg(int argc, char **argv)
 				patfl[sizeof patfl - 1] = 0;
 				break;
 			case 'h':
-				exit(help(0));
+				exit(usage(0));
 			case 'v':
 				exit(about());
 			default:
-				exit(help(ERR_OPT));
+				exit(usage(ERR_OPT));
 		}
 }
 
@@ -83,7 +84,7 @@ static void ldpat(void)
 
 		acadd(pat, ps);
 		int h = hash(ps);
-		if (h < 0) exit(help(ERR_LIM));
+		if (h < 0) exit(usage(ERR_LIM));
 		memcpy(patwei[h], pw, sizeof patwei[h]);
 	}
 	acpre(pat);
@@ -92,34 +93,33 @@ static void ldpat(void)
 
 static char *hyphen(char *dst, const char *src)
 {
-	char lsrc[WRD_MAXL + 2 + 1] = {0};
-	sprintf(lsrc, ".%s.", src);
-	for (char *s = lsrc; *s; ++s) *s = tolower(*s);
+	char ls[WRD_MAXL + 2 + 1] = {0};
+	sprintf(ls, ".%s.", src);
+	for (char *s = ls; *s; ++s) *s = tolower(*s);
 
 	struct acmat mat[WRD_MAXL * WRD_MAXL];
-	int nm = acmat(pat, mat, lsrc);
+	int nm = acmat(pat, mat, ls);
 	int w[WRD_MAXL + 1] = {0};
 
 	for (int i = 0; i < nm; ++i) {
 		struct acmat *m = mat + i;
-		//printf("%s: %s\n", m->pos, m->pat);
 		int h = hash(m->pat);
-		int p = m->pos - lsrc;
+		int p = m->pos - ls;
 		int l = strlen(m->pat);
 		for (int j = 0; j <= l; ++j) w[p + j] = MAX(w[p + j], patwei[h][j]);
 	}
 
 	char *pd = dst;
-	for (char *s = lsrc + 1; *s != '.'; ++s) {
-		if (s - lsrc > 2 && *(s + 1) != '.' && 0 != w[s - lsrc] % 2) *pd++ = '-';
-		*pd++ = src[s - lsrc - 1];
+	for (char *s = ls + 1; *s != '.'; ++s) {
+		if (s - ls > 2 && *(s + 1) != '.' && 0 != w[s - ls] % 2) *pd++ = '-';
+		*pd++ = src[s - ls - 1];
 	}
 
 	*pd = 0;
 	return dst;
 }
 
-static int help(int ret)
+static int usage(int ret)
 {
 	puts(
 		"USAGE:\n"
@@ -132,7 +132,12 @@ static int help(int ret)
 		"	-h\n"
 		"		Print this brief manumal\n"
 		"	-v\n"
-		"		Print the version"
+		"		Print the version\n"
+		"\n"
+		"LIMITS:\n"
+		"	Max number of patterns: 65536\n"
+		"	Max length of a pattern: 127\n"
+		"	Max length of a word:	127"
 	);
 
 	return ret;
@@ -141,7 +146,7 @@ static int help(int ret)
 static int about(void)
 {
 	puts(
-		"hyphen 0.0.0\n"
+		"hyphen 0.0.1\n"
 		"Written by Yuxuan Dong <www.dyx.name>"
 	);
 

@@ -11,10 +11,10 @@ int hash(const char *s)
 	while (*p) h = 31*h + *p++;
 	h %= HASH_MAX;
 
-	unsigned init = h;
+	unsigned ini = h;
 	while (tab[h] && strcmp(tab[h], s)) {
 		h = (h + 1) % HASH_MAX;
-		if (h == init) return -1;
+		if (h == ini) return -1;
 	}
 
 	if (!tab[h]) tab[h] = strdup(s);

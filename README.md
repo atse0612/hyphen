@@ -19,3 +19,9 @@ The `hyphen` reads words separated by blanks from the standard input and prints 
 	hy-phen-ate
 
 Execute `hyphen -h` for details.
+
+## LIMITS
+
++ Max number of patterns: 65536
++ Max length of a pattern: 127
++ Max length of a word:	127
