@@ -1,7 +1,7 @@
 ## Hyphen
 Hy-phen-ate (Eng-lish) words by syl-la-bles.
 
-A C implement of Frank Liang's PhD dissertation, and the algorithm is optimized with Aho-Croasick automaton.
+A C implement of Knuth-Liang algorithm optimized with Aho-Corasick automaton.
 
 # Installation
 
@@ -16,6 +16,6 @@ The `hyphen` reads words separated by blanks from the standard input and prints 
 	pro-gram-ming
 	hack-er
 	math-e-mat-ics
-	hy-phen-at
+	hy-phen-ate
 
 Execute `hyphen -h` for details.
