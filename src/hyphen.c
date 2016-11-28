@@ -121,11 +121,29 @@ static char *hyphen(char *dst, const char *src)
 
 static int help(int ret)
 {
-	system("cat "DESTDIR"/usr/local/share/hyphen/doc/help");
+	puts(
+		"USAGE:\n"
+		"	hyphen [-p pattern-file] [-h | -v]\n"
+		"\n"
+		"OPTIONS:\n"
+		"	-p pattern-file\n"
+		"		The pattern-file contains patterns which indicates hyphen how to hyphenate words\n"
+		"		If not specified, "DESTDIR"/usr/local/share/hyphen/pat will be used\n"
+		"	-h\n"
+		"		Print this brief manumal\n"
+		"	-v\n"
+		"		Print the version"
+	);
+
 	return ret;
 }
 
 static int about(void)
 {
-	return system("cat "DESTDIR"/usr/local/share/hyphen/doc/about");
+	puts(
+		"hyphen 0.0.0\n"
+		"Written by Yuxuan Dong <www.dyx.name>"
+	);
+
+	return 0;
 }

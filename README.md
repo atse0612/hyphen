@@ -1,13 +1,13 @@
-## Hyphen
+# Hyphen
 Hy-phen-ate (Eng-lish) words by syl-la-bles.
 
 A C implement of Knuth-Liang algorithm optimized with Aho-Corasick automaton.
 
-# Installation
+## Installation
 
 	$ make install
 
-# Usage
+## Usage
 The `hyphen` reads words separated by blanks from the standard input and prints results one per line to the standard output.
 
 	$ echo algorithm computer programming hacker mathematics hyphenate | hyphen
