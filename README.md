@@ -20,7 +20,7 @@ The `hyphen` reads words separated by blanks from the standard input and prints 
 
 Execute `hyphen -h` for details.
 
-## LIMITS
+## Limits
 
 + Max number of patterns: 65536
 + Max length of a pattern: 127
