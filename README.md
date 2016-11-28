@@ -1,7 +1,7 @@
 ## Hyphen
 Hy-phen-ate (Eng-lish) words by syl-la-bles.
 
-A C implement of Frank Liang's PhD dissertation, and the algorithm is optimized by Aho-Croasick automaton.
+A C implement of Frank Liang's PhD dissertation, and the algorithm is optimized with Aho-Croasick automaton.
 
 # Installation
 
