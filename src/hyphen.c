@@ -146,7 +146,7 @@ static int usage(int ret)
 static int about(void)
 {
 	puts(
-		"hyphen 0.0.1\n"
+		"hyphen 0.0.2\n"
 		"Written by Yuxuan Dong <www.dyx.name>"
 	);
 
