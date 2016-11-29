@@ -27,7 +27,7 @@ struct ac {
 ac_t *acnew(void)
 {
 	ac_t *ret = memset(malloc(sizeof(ac_t)), 0, sizeof(ac_t));
-	return ret->fl = ret;
+	return ret;
 }
 
 void acadd(ac_t *ac, const char *pat)
